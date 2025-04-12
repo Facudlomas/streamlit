@@ -15,31 +15,30 @@ class_dict = {
 
 # Page Configuration
 st.set_page_config(
-    page_title="Diabetes Prediction App",
+    page_title="Prediccion de Diabetes App",
     page_icon="🩺",
     layout="centered",
     initial_sidebar_state="expanded"
 )
 
 # App Title and Description
-st.title("Diabetes Prediction Web Application")
+st.title("aplicacion web de prediccion de diabetes")
 st.markdown(
     """
-    ### Welcome! 🩺
-    This app predicts whether a person is diabetic or not based on input data. 
-    Please provide the necessary information below.
+    ### Bienvenidos! 🩺
+    Esta aplicación predice si una persona es diabética basándose en los datos ingresados. Proporcione la información necesaria a continuación.
     """
 )
 
 # Sidebar Styling and Input Section
-st.sidebar.header("Input Features")
-st.sidebar.markdown("### Provide your health data:")
+st.sidebar.header("Introduzca sus datos")
+st.sidebar.markdown("### Rellene sus datos de salud:")
 
 # Input Fields
-glucose = st.sidebar.number_input('Glucose Level (mg/dL)', min_value=0, max_value=300, step=1, value=100, help="Enter glucose level.")
-insulin = st.sidebar.number_input('Insulin Level (μIU/mL)', min_value=0, max_value=1000, step=1, value=50, help="Enter insulin level.")
-bmi = st.sidebar.number_input('Body Mass Index (BMI)', min_value=0.0, max_value=70.0, step=0.1, value=25.0, help="Enter BMI value.")
-age = st.sidebar.number_input('Age (years)', min_value=0, max_value=120, step=1, value=30, help="Enter your age.")
+glucose = st.sidebar.number_input('Nivel de Glucosa (mg/dL)', min_value=0, max_value=300, step=1, value=100, help="Enter glucose level.")
+insulin = st.sidebar.number_input('Nivel de insulina (μIU/mL)', min_value=0, max_value=1000, step=1, value=50, help="Enter insulin level.")
+bmi = st.sidebar.number_input('Indice de masa corporal (IMC)', min_value=0.0, max_value=70.0, step=0.1, value=25.0, help="Enter BMI value.")
+age = st.sidebar.number_input('Edad(Años)', min_value=0, max_value=120, step=1, value=30, help="Enter your age.")
 # Input Data Frame
 input_data = pd.DataFrame({'Glucose': [glucose],'Insulin': [insulin], 'BMI': [bmi], 'Age': [age]})
 
