@@ -39,8 +39,12 @@ glucose = st.sidebar.number_input('Nivel de Glucosa (mg/dL)', min_value=0, max_v
 insulin = st.sidebar.number_input('Nivel de insulina (μIU/mL)', min_value=0, max_value=1000, step=1, value=50, help="Enter insulin level.")
 bmi = st.sidebar.number_input('Indice de masa corporal (IMC)', min_value=0.0, max_value=70.0, step=0.1, value=25.0, help="Enter BMI value.")
 age = st.sidebar.number_input('Edad(Años)', min_value=0, max_value=120, step=1, value=30, help="Enter your age.")
+Pregnancies = st.sidebar.number_input('embarazos', min_value=0, max_value=30, step=1, value=0, help="Enter Pregnancies level.")
+BloodPressure = st.sidebar.number_input('Presion sanguinea', min_value=0, max_value=140, step=1, value=50, help="Enter BloodPressure level.")
+SkinThickness = st.sidebar.number_input('Grosor de la piel', min_value=0.0, max_value=70.0, step=0.1, value=25.0, help="Enter SkinThickness value.")
+DiabetesPedigreeFunction = st.sidebar.number_input('Promedio antecedentes de diabetes en la familia', min_value=0.0, max_value=2.5, step=0.1, value=1.0, help="Enter DiabetesPedigreeFunction value.")
 # Input Data Frame
-input_data = pd.DataFrame({'Glucose': [glucose],'Insulin': [insulin], 'BMI': [bmi], 'Age': [age]})
+input_data = pd.DataFrame({'DiabetesPedigreeFunction': [DiabetesPedigreeFunction],'BloodPressure': [BloodPressure],'SkinThickness': [SkinThickness],'Pregnancies': [Pregnancies],'Glucose': [glucose],'Insulin': [insulin], 'BMI': [bmi], 'Age': [age]})
 
 # Prediction Button
 st.markdown("---")
