@@ -10,8 +10,8 @@ with open(model_file, 'rb') as input_file:
 
 # Dictionary for translating predictions
 class_dict = {
-    0: 'Not diabetic',
-    1: 'Diabetic'}
+    0: 'No diabetico',
+    1: 'Posible Diabetes'}
 
 # Page Configuration
 st.set_page_config(
@@ -44,11 +44,11 @@ BloodPressure = st.sidebar.number_input('Presion sanguinea', min_value=0, max_va
 SkinThickness = st.sidebar.number_input('Grosor de la piel', min_value=0.0, max_value=70.0, step=0.1, value=25.0, help="Enter SkinThickness value.")
 DiabetesPedigreeFunction = st.sidebar.number_input('Promedio antecedentes de diabetes en la familia', min_value=0.0, max_value=2.5, step=0.1, value=1.0, help="Enter DiabetesPedigreeFunction value.")
 # Input Data Frame
-input_data = pd.DataFrame({'DiabetesPedigreeFunction': [DiabetesPedigreeFunction],'BloodPressure': [BloodPressure],'SkinThickness': [SkinThickness],'Pregnancies': [Pregnancies],'Glucose': [glucose],'Insulin': [insulin], 'BMI': [bmi], 'Age': [age]})
+input_data = pd.DataFrame({'Pregnancies': [Pregnancies],'Glucose': [glucose],'BloodPressure': [BloodPressure],'SkinThickness': [SkinThickness],'Insulin': [insulin], 'BMI': [bmi], 'DiabetesPedigreeFunction': [DiabetesPedigreeFunction],'Age': [age]})
 
 # Prediction Button
 st.markdown("---")
-if st.button("Predict"):
+if st.button("Predecir"):
     try:
         # Prediction logic
         prediction = model.predict(input_data)[0]
@@ -57,18 +57,16 @@ if st.button("Predict"):
         # Display Results
         st.success(f"Prediction: {predicted_class}")
         if prediction == 1:
-            st.warning("Consult a healthcare professional for further evaluation.")
+            st.warning("Consulte con un profesional de la salud para una evaluación más detallada.")
         else:
-            st.info("Maintain a healthy lifestyle to reduce risks.")
+            st.info("Mantener un estilo de vida saludable para reducir riesgos.")
     except Exception as e:
         st.error(f"An error occurred while predicting: {e}")
 
 # Footer
 st.markdown("---")
-st.markdown( """ ### Notes: 
-    - Model trained with health-related data     
-    - Ensure input values are within reasonable ranges.
-    - Consult a healthcare provider for clinical advice.""")
+st.markdown( """ ### Notas:   
+    - Asegúrese de que los valores de entrada estén dentro de rangos razonables""")
 
 # Styling with external CSS
 st.markdown(
