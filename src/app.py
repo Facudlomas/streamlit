@@ -5,7 +5,8 @@ import streamlit as st
 # Load the trained model
 import os
 
-model_file = os.path.join("models", "decision_tree_classifier_default_422.sav")
+model_file = os.path.join(os.path.dirname(__file__), '..', 'models', 'decision_tree_classifier_default_422.sav')
+model_file = os.path.abspath(model_file)
 
 with open(model_file, 'rb') as input_file:
     model = pickle.load(input_file)
