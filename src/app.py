@@ -3,7 +3,9 @@ import pandas as pd
 import streamlit as st
 
 # Load the trained model
-model_file = '/workspaces/streamlit/models/decision_tree_classifier_default_422.sav'
+import os
+
+model_file = os.path.join("models", "decision_tree_classifier_default_422.sav")
 
 with open(model_file, 'rb') as input_file:
     model = pickle.load(input_file)
